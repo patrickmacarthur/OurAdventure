@@ -1,0 +1,55 @@
+# sample cave -- six rooms, four passageways.
+# Unlocked door for entrance.
+# Has four directions, healing and poison potions, different treasures,
+# light/heavy objects.
+directions 4 n s e w
+
+consumable food1 pbj |peanut butter and jelly sandwich| 1 1 1
+consumable drink1 healing |bottle labeled Healing Potion| 3 1 1
+consumable drink2 poison |bottle labeled poison| -3 1 1
+
+key key1 redkey |old red key, rusty from age|
+key key2 goldkey |glinting yellow key|
+
+treasure t1 diamond |glittering clear gemstone| 10 1 1
+treasure t2 goldbar |heavy bar of yellow metal| 25 10 2
+treasure t3 goldcoin |yellow heavy coin| 25 10 2
+treasure t4 leadbar |dull bar of metal| 0 20 5
+treasure t5 leadboulder |huge massive boulder| 0 200 200
+treasure t6 hugefeather |huge feather that is bigger than you| 0 0 200
+treasure t7 bones |dead bones brook| 9999 0 0
+
+pack pk1 pack |leather shoulder bag| 1 5
+pack pk2 bigpack |bigger leather shoulder bag| 1 8
+
+container chest c1 trunk |large trunk with keyhole| locked 1 t1 key1
+container chest c2 futon |cow with spaceship| locked 1 t7 key2
+container box b1 bigbox |large brown box, covered with dust| closed 2 t3 c2
+
+feature room r1 clearing |clearing surrounded by trees, a hill to north| 1 key2
+feature lockableDoorway d1 entrance |dirt covered door with a keyhole,
+the door is bound with iron straps| locked key2
+feature room r2 foyer |small room, carved out of the stone| 2 key1 b1
+feature room r3 iceroom |large room with ice like stone clinging to ceiling| 0
+feature room r4 redroom |small cavern, red stone on walls| 2 c1 food1
+feature room r5 blueroom |small cavern, blue stone on walls| 3 drink2 pk1 t6
+feature room r6 secretroom |large throne room| 2 drink1 t2
+feature passage p1 westpassage |narrow passage, water dripping from ceiling|
+1 t4
+feature passage p2 eastpassage |wide passage, a foot of water on floor| 0
+feature passage p3 northpassage |wide passage, an inch of water on floor| 1 t5
+feature passage p4 risingpassage |passage with rising slope| 1 pk2
+
+adj r1 1 n d1
+adj d1 2 s r1 n r2
+adj r2 4 s d1 w p1 e p2 n p3
+adj p1 2 e r2 n r3
+adj p2 2 w r2 n r4
+adj p3 2 s r2 n r5
+adj p4 2 s r3 n r6
+adj r3 2 s p1 n p4
+adj r4 1 s p2
+adj r5 1 s p3
+adj r6 1 s p4
+
+start r1
