@@ -124,23 +124,5 @@ Feature * getExit( map<ID, Feature*> features, Feature * r1, const Direction & d
 {
     std::cout << "Room " << dir << " of " << r1->getName() << ": ";
 
-    ID * id = r1->getExitID( dir );
-    if ( ! id )
-    {
-        std::cout << "(none)\n";
-        return 0;
-    }
-
-    map<ID, Feature *>::iterator rIter;
-    rIter = features.find( *id );
-    if ( rIter == features.end() )
-    {
-        std::cerr << "Room not defined; exiting...\n";
-        std::exit( 1 );
-    }
-    else
-    {
-        std::cout << rIter->second->getName() << '\n';
-        return rIter->second;
-    }
+    return r1->getExit( dir );
 }
