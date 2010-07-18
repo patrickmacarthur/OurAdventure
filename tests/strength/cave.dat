@@ -1,0 +1,24 @@
+# sample cave -- six rooms, four passageways.
+# Unlocked door for entrance.
+# Has four directions, healing and poison potions, different treasures,
+# light/heavy objects.
+directions 4 n s e w
+
+consumable drink1 healing |bottle labeled Healing Potion| 1 1 1
+consumable drink2 poison1 |bottle labeled poison| -3 1 1
+consumable drink3 poison2 |bottle labeled poison| -3 1 1
+
+treasure t1 diamond |glittering clear gemstone| 10 3 1
+treasure t2 goldbar |heavy bar of yellow metal| 25 10 2
+treasure t3 goldcoin |yellow heavy coin| 25 10 2
+treasure t4 leadbar |dull bar of metal| 0 20 5
+
+pack pk1 pack |leather shoulder bag| 1 30
+
+feature room r1 clearing |clearing surrounded by trees, a hill to north| 4 pk1 t1 t2 drink2
+feature room r2 foyer |small room, carved out of the stone| 4 drink3 drink1 t3 t4
+
+adj r1 1 n r2
+adj r2 1 s r1
+
+start r1

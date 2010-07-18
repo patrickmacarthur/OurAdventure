@@ -1,0 +1,40 @@
+# sample cave -- three rooms, two passageways, fourth room (clearing) for
+# starting location.  Locked door for entrance.
+
+directions 4 n s e w
+
+consumable food1 pbj |peanut butter and jelly sandwich| 1 1 1
+
+key key1 redkey |old red key, rusty from age|
+key key2 goldkey |glinting yellow key|
+
+treasure t1 diamond |glittering clear gemstone| 10 1 1
+treasure t2 goldbar |heavy bar of yellow metal| 25 10 2
+treasure t3 goldcoin |yellow heavy coin| 25 10 2
+treasure t4 leadbar |dull bar of metal| 0 20 5
+
+pack pk1 pack |leather shoulder bag| 1 5
+
+container chest c1 trunk |large trunk with keyhole| locked 2 t1 t2 key1
+container box b1 bigbox |large brown box, covered with dust| closed 1 t3
+
+feature room r1 clearing |clearing surrounded by trees, a hill to north| 1 key2 
+feature lockableDoorway d1 entrance |dirt covered door with a keyhole,
+    the door is bound with iron straps| locked key2
+feature room r2 foyer |small room, carved out of the stone| 2 key1 b1
+feature room r3 iceroom |large room with ice like stone clinging to ceiling| 
+    1 pk1
+feature room r4 redroom |small cavern, red stone on walls| 2 c1 food1
+feature passage p1 westpassage |narrow passage, water dripping from ceiling|
+    1 t4
+feature passage p2 eastpassage |wide passage, a foot of water on floor| 0
+
+adj r1 1 n d1
+adj d1 2 s r1 n r2
+adj r2 3 s d1 w p1 e p2
+adj p1 2 e r2 n r3
+adj p2 2 w r2 n r4
+adj r3 1 s p1
+adj r4 1 s p2
+
+start r1

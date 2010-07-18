@@ -1,0 +1,7 @@
+feature room r1 northend |North end of passage| 0
+feature passage r2 passage |Passage with exits north and west| 0
+feature room r3 westend |West end of passage| 0
+adj r1 1 south r2
+adj r2 2 north r1 west r3
+adj r3 1 east r2
+start r1

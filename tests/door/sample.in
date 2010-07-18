@@ -1,0 +1,10 @@
+feature room r1 outside |Outside door| 0
+feature doorway d1 opendoor |You are in the entrance of the outer door| open
+feature doorway d2 shutdoor |You are in the entrance of the inner door| closed
+feature room r2 inside |Inside door| 0
+adj r1 1 south d1
+adj d1 2 north r1 south d2
+adj d2 2 north d1 south r2
+adj r2 1 north d2
+start r1
+end r2

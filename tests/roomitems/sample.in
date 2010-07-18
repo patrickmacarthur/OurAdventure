@@ -1,0 +1,9 @@
+item i1 item1
+item i2 item2
+item i3 item3
+feature room r1 startroom |Test room 1| 1 i1
+feature room r2 northroom |Test room 2, north of start room| 2 i2 i3
+adj r1 1 north r2
+adj r2 1 south r1
+start r1
+toMove i1

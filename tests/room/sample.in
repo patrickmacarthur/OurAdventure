@@ -1,0 +1,5 @@
+feature room r1 startroom |Test room 1| 0
+feature room r2 northroom |Test room 2, north of start room| 0
+adj r1 1 north r2
+adj r2 1 south r1
+start r1

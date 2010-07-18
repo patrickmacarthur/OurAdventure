@@ -1,0 +1,13 @@
+key k1 key |small key|
+feature room r1 outside |Outside door| 1 k1
+feature lockableDoorway d1 bronzedoor |You are in the entrance of the Bronze door| open k1
+feature lockableDoorway d2 silverdoor |You are in the entrance of the Silver door| closed k1
+feature lockableDoorway d3 golddoor |You are in the entrance of the Gold door| locked k1
+feature room r2 inside |Inside door| 0
+adj r1 1 south d1
+adj d1 2 north r1 south d2
+adj d2 2 north d1 south d3
+adj d3 2 north d2 south r2
+adj r2 1 north d3
+start r1
+end r2

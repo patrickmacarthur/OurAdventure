@@ -1,0 +1,8 @@
+65 32
+consumable food1 apple |rotting apple| -1 2 5
+key k1 goldkey |key with a glint|
+treasure t1 diamond |large cut diamond| 500 2 1
+pack p1 pack |leather bag| 2 10
+container chest c1 trunk |large trunk| locked 2 t1 p1 k1
+container box c2 crate |splintered crate| open 2 t1 p1
+
