@@ -1,0 +1,11 @@
+OurAdventure
+
+OurAdventure build system requires cmake 2.6 or higher.
+
+Installation Instructions
+
+$ mkdir build
+$ cd build
+$ cmake ..
+$ make
+
