@@ -33,7 +33,7 @@ class Map;
 
 class Game {
     public:
-        Game( bool test );
+        Game( bool test, string filename = myDefaultCaveFile );
             // constructor with testing mode flag
             
         ~Game();

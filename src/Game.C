@@ -50,7 +50,7 @@ Game::~Game()
 
 // ---------------------------------------------------------
 // constructor with testing mode flag
-Game::Game( bool test )
+Game::Game( bool test, string caveFileName )
 {
     string restore = "";
     
@@ -82,7 +82,7 @@ Game::Game( bool test )
     
     if ( restore == "n" )
     {
-        caveFile.open( myDefaultCaveFile );
+        caveFile.open( caveFileName.c_str() );
         
         if ( !caveFile )
         {
