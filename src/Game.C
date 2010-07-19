@@ -17,6 +17,8 @@
 
 #include "Game.h"
 
+#include "config.h"
+
 #include "Adventurer.h"
 #include "Inventory.h"
 #include "Feature.h"
@@ -32,7 +34,7 @@
 #include "StartRoom.h"
 #include "Container.h"
 
-char Game::myDefaultCaveFile[] = "cave.dat";
+char Game::myDefaultCaveFile[] = DEFAULT_CAVE_FILE;
 int Game::myDefaultAdventurerHealth = 5;
 int Game::myDefaultAdventurerMoves = 20;
 int Game::myDefaultAdventurerNumberItems = 0;

@@ -1,5 +1,7 @@
 # File: src/CMakeLists.txt
 
+INCLUDE_DIRECTORIES (. ${CMAKE_BINARY_DIR})
+
 # Executables
 ADD_EXECUTABLE (OurAdventure
     Adjacency.C
@@ -31,5 +33,3 @@ ADD_EXECUTABLE (OurAdventure
 # Installation
 INSTALL (TARGETS OurAdventure
          RUNTIME DESTINATION bin)
-INSTALL (FILES ${CMAKE_CURRENT_SOURCE_DIR}/cave.dat
-         DESTINATION share)
