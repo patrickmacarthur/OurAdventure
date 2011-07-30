@@ -14,7 +14,6 @@
 // has no commands associated with it
 GameCommandProcessor::GameCommandProcessor()
 {
-    myBadCommand = 0;
 }
 
 // ---------------------------------------------------------
@@ -29,8 +28,6 @@ GameCommandProcessor::~GameCommandProcessor()
         delete iter->second;
         iter++;
     }
-
-    delete myBadCommand;
 }
 
 // ---------------------------------------------------------
@@ -45,38 +42,20 @@ void GameCommandProcessor::addCommand( const string& name, GameCommand * cmd )
 }
 
 // ---------------------------------------------------------
-// registers a command to be executed for any
-// unrecognized string; optional as the default
-// behavior is to simply print an error message
-void GameCommandProcessor::addBadCommand( GameCommand * cmd )
-{
-    if ( myBadCommand )
-        delete myBadCommand;
-
-    myBadCommand = cmd;
-}
-
-// ---------------------------------------------------------
 // triggers the named command
 bool GameCommandProcessor::execute( const string& v )
 {
     if ( !myCommands.count( v ) )
     {
-        if ( !myBadCommand )
-        {
-            std::map<std::string, GameCommand *>::iterator iter;
+        std::map<std::string, GameCommand *>::iterator iter;
 
-            cout << "I only understand the following:\n";
-            for ( iter = myCommands.begin();
-                  iter != myCommands.end(); ++iter ) {
-                cout << iter->first << " ";
-            }
-            cout << "\n";
-            return false;
+        cout << "I only understand the following:\n";
+        for ( iter = myCommands.begin(); iter != myCommands.end(); ++iter ) {
+            cout << iter->first << " ";
         }
-        else
-            return myBadCommand->execute();
-    }
-    else
+        cout << "\n";
+        return false;
+    } else {
         return myCommands[ v ]->execute();
+    }
 }

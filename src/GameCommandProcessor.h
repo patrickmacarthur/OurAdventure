@@ -28,11 +28,6 @@ class GameCommandProcessor {
             // associates the given command with the string;
             // replaces any command already keyed to the string
 
-        void addBadCommand( GameCommand * cmd );
-            // registers a command to be executed for any
-            // unrecognized string; optional as the default
-            // behavior is to simply print an error message
-
         bool execute( const string& v );
             // triggers the named command
 
@@ -42,7 +37,6 @@ class GameCommandProcessor {
             // copy and assignment not implemented
 
         map<string, GameCommand*> myCommands;
-        GameCommand * myBadCommand;
 };
 
 #endif

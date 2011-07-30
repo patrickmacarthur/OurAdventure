@@ -885,22 +885,6 @@ bool QuitCommand::execute()
 
 
 /*
-    Prints out an appropriately snarky message when a bad
-    command is entered.
-*/
-
-// ---------------------------------------------------------
-bool BadCommand::execute()
-{
-    cout << "I don't know how to do that!\n\n";
-
-    string line;
-    getline( cin, line );
-
-    return true;
-}
-
-/*
     Testing command. Prints a lexically ordered list of all
     items and what feature each is in.
 */

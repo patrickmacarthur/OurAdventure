@@ -299,16 +299,6 @@ class QuitCommand: public GameCommand {
 };
 
 /*
-    Prints out an appropriately snarky message when a bad
-    command is entered.
-*/
-
-class BadCommand: public GameCommand {
-    public:
-        virtual bool execute();
-};
-
-/*
     Testing command. Prints a lexically ordered list of all
     items and what feature each is in.
 */
