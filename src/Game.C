@@ -208,7 +208,6 @@ void Game::addCommands( bool testing )
     myQuitCommand = "quit";
     myCommandProcessor->addCommand( myQuitCommand,
         new QuitCommand( myAdventurer, myMap ) );
-    myCommandProcessor->addBadCommand( new BadCommand );
 
     if ( testing )
     {

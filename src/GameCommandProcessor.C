@@ -64,8 +64,15 @@ bool GameCommandProcessor::execute( const string& v )
     {
         if ( !myBadCommand )
         {
-            cout << "bad command\n";
-            return true;
+            std::map<std::string, GameCommand *>::iterator iter;
+
+            cout << "I only understand the following:\n";
+            for ( iter = myCommands.begin();
+                  iter != myCommands.end(); ++iter ) {
+                cout << iter->first << " ";
+            }
+            cout << "\n";
+            return false;
         }
         else
             return myBadCommand->execute();
