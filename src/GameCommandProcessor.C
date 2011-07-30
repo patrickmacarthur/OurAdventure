@@ -51,7 +51,8 @@ bool GameCommandProcessor::execute( const string& v )
 
         cout << "I only understand the following:\n";
         for ( iter = myCommands.begin(); iter != myCommands.end(); ++iter ) {
-            cout << iter->first << " ";
+            cout << iter->first << ": "
+                 << iter->second->briefDescription() << "\n";
         }
         cout << "\n";
         return false;

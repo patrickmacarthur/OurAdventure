@@ -33,6 +33,10 @@ class GameCommand {
         static map<int, string> getSaveStates();
             // return a map of save state number-description
             // pairs, taken from the save state file
+
+        virtual std::string briefDescription() = 0;
+            // returns a brief one-line description of the command
+            // description should be less than 60 characters
 };
 
 /*
@@ -46,6 +50,8 @@ class LookCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -65,6 +71,8 @@ class DetailCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -82,6 +90,8 @@ class InventoryCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -102,6 +112,8 @@ class ExamineCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -121,6 +133,8 @@ class TakeCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -139,6 +153,8 @@ class DropCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -160,6 +176,8 @@ class UnlockCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -177,6 +195,8 @@ class OpenCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -196,6 +216,8 @@ class ConsumeCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -213,6 +235,8 @@ class GoCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -235,6 +259,8 @@ class InCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -256,6 +282,8 @@ class SaveCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -276,6 +304,8 @@ class RestoreCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -292,6 +322,8 @@ class QuitCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -311,6 +343,8 @@ class LocationCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -328,6 +362,8 @@ class GotoCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -348,6 +384,8 @@ class HealthCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -365,6 +403,8 @@ class EatCommand: public GameCommand {
             // and map
 
         virtual bool execute();
+
+        virtual std::string briefDescription();
 
     private:
         Adventurer * myAdventurer;
@@ -384,6 +424,8 @@ class MoveCommand: public GameCommand {
 
         virtual bool execute();
 
+        virtual std::string briefDescription();
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -397,6 +439,8 @@ class MoveCommand: public GameCommand {
 class EchoCommand: public GameCommand {
     public:
         virtual bool execute();
+
+        virtual std::string briefDescription();
 };
 
 #endif

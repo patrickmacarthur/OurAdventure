@@ -52,6 +52,12 @@ bool LookCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string LookCommand::briefDescription()
+{
+    return "Briefly describes the current feature but not its contents";
+}
+
 /*
     Verbosely describe the current feature, including its
     contents. Short names are used for items.
@@ -79,6 +85,12 @@ bool DetailCommand::execute()
     }
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string DetailCommand::briefDescription()
+{
+    return "Describes the current feature and its contents";
 }
 
 /*
@@ -109,6 +121,12 @@ bool InventoryCommand::execute()
     }
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string InventoryCommand::briefDescription()
+{
+    return "Lists everything that the adventurer is carrying";
 }
 
 /*
@@ -156,6 +174,12 @@ bool ExamineCommand::execute()
     myAdventurer->move();
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string ExamineCommand::briefDescription()
+{
+    return "Gives extended description of an item";
 }
 
 /*
@@ -210,6 +234,12 @@ bool TakeCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string TakeCommand::briefDescription()
+{
+    return "Takes an item from the floor";
+}
+
 /*
     One argument. Drops an item from the inventory. Items
     may only be dropped on the floor of a feature, not in a
@@ -252,6 +282,12 @@ bool DropCommand::execute()
     myAdventurer->move();
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string DropCommand::briefDescription()
+{
+    return "Drops an item on the floor";
 }
 
 
@@ -348,6 +384,12 @@ bool UnlockCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string UnlockCommand::briefDescription()
+{
+    return "Unlocks a door or container with a key";
+}
+
 /*
     One argument. Opens a door or container. Locked items
     will not open. Open items will also not open.
@@ -390,6 +432,12 @@ bool OpenCommand::execute()
     }
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string OpenCommand::briefDescription()
+{
+    return "Opens a door or container";
 }
 
 /*
@@ -490,6 +538,12 @@ bool ConsumeCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string ConsumeCommand::briefDescription()
+{
+    return "Consumes an item";
+}
+
 /*
     One argument. Moves the adventurer one feature in the
     specified direction. May or may not be successful.
@@ -548,6 +602,12 @@ bool GoCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string GoCommand::briefDescription()
+{
+    return "Moves the adventurer in a given direction";
+}
+
 /*
     Moves the adventurer from a doorway into the feature
     beyond. A doorway has an entryway followed by a door,
@@ -602,6 +662,12 @@ bool InCommand::execute()
     }
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string InCommand::briefDescription()
+{
+    return "Moves from doorway to feature beyond";
 }
 
 /*
@@ -744,6 +810,12 @@ bool SaveCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string SaveCommand::briefDescription()
+{
+    return "Saves the current game state";
+}
+
 /*
     Loads a saved state onto the game. List of save states
     and descriptions is printed and user picks one by
@@ -862,6 +934,12 @@ bool RestoreCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string RestoreCommand::briefDescription()
+{
+    return "Restores a previous game state";
+}
+
 /*
     Quits the game. Prints out a score and whatnot.
 */
@@ -881,6 +959,12 @@ bool QuitCommand::execute()
     cout << myMap->getPoints() << " possible points.\n\n";
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string QuitCommand::briefDescription()
+{
+    return "Quits the game";
 }
 
 
@@ -929,6 +1013,12 @@ bool LocationCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string LocationCommand::briefDescription()
+{
+    return "Testing command -- prints location of all items";
+}
+
 /*
     Testing command. One argument. Moves adventurer directly
     to the specified feature.
@@ -960,6 +1050,12 @@ bool GotoCommand::execute()
         cout << "no such feature!\n\n";
 
     return true;
+}
+
+// ---------------------------------------------------------
+std::string GotoCommand::briefDescription()
+{
+    return "Testing command -- moves to a given feature";
 }
 
 /*
@@ -1009,6 +1105,12 @@ bool HealthCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string HealthCommand::briefDescription()
+{
+    return "Testing command -- prints current health";
+}
+
 /*
     Testing command. One argument. Modifies the adventurer's
     health by the given delta.
@@ -1033,6 +1135,12 @@ bool EatCommand::execute()
 
     cout << "\n";
     return true;
+}
+
+// ---------------------------------------------------------
+std::string EatCommand::briefDescription()
+{
+    return "Testing command -- modifies health by given amount";
 }
 
 /*
@@ -1061,6 +1169,12 @@ bool MoveCommand::execute()
     return true;
 }
 
+// ---------------------------------------------------------
+std::string MoveCommand::briefDescription()
+{
+    return "Testing command -- idles for a given number of time units";
+}
+
 /*
     Testing command. Argument is rest of line. Simply echoes
     whatever follows the command.
@@ -1073,4 +1187,10 @@ bool EchoCommand::execute()
     getline( cin, echo );
     cout << echo << "\n\n";
     return true;
+}
+
+// ---------------------------------------------------------
+std::string EchoCommand::briefDescription()
+{
+    return "Testing comand -- echoes given text to screen";
 }
