@@ -23,11 +23,14 @@ To build:
 The executable will be in located at `build/src/OurAdventure`.  The default
 cave file is in the `cave.dat` file.  You may install this into `/usr/local`
 with:
+
     $ sudo make install
 
 If you installed it, you may run the program with:
+
     $ OurAdventure
 
 Otherwise, you may run the program from the main OurAdventure directory with:
+
     $ build/src/OurAdventure -c cave.dat
 
