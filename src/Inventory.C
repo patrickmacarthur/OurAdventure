@@ -4,7 +4,7 @@
     storage, while game commands should implement switching
     between storage strategies and basically all inventory
     manipulation tasks.
-    
+
     Tom Harada
 */
 
@@ -23,7 +23,7 @@ ostream& operator << ( ostream& s, const Inventory& inv )
     inv.output( s );
     return s;
 }
-            
+
 /*
     A storage strategy comprising two hands, each of which
     may hold something.
@@ -44,13 +44,13 @@ bool HandStrategy::addItem( Adventurer * adv, Carryable * item )
     if ( item->isPack() )
     {
         Size total;
-        
+
         if ( myLeftHand )
             total += myLeftHand->getSize();
-    
+
         if ( myRightHand )
             total += myRightHand->getSize();
-            
+
         if ( total > item->getSize() )
         {
             cout << "Try dropping some items first.\n";
@@ -59,15 +59,15 @@ bool HandStrategy::addItem( Adventurer * adv, Carryable * item )
         else
         {
             PackStrategy * pack = new PackStrategy( item );
-                
+
             if ( myLeftHand )
                 pack->addItem( 0, myLeftHand );
-                
+
             if ( myRightHand )
                 pack->addItem( 0, myRightHand );
-                
+
             adv->setInventory( pack );
-            
+
             return true;
         }
     }
@@ -80,7 +80,7 @@ bool HandStrategy::addItem( Adventurer * adv, Carryable * item )
         else
             return false;
     }
-        
+
     return true;
 }
 
@@ -94,7 +94,7 @@ bool HandStrategy::removeItem( Adventurer * adv, const Name& name )
         myRightHand = 0;
     else
         return false;
-        
+
     return true;
 }
 
@@ -113,15 +113,15 @@ bool HandStrategy::hasItem( const Name& name )
 Weight HandStrategy::getWeight() const
 {
     Weight total;
-    
+
     if ( myLeftHand )
         total += myLeftHand->getWeight();
-    
+
     if ( myRightHand )
         total += myRightHand->getWeight();
-        
+
     return total;
-}            
+}
 
 // ---------------------------------------------------------
 // returns pointer to item
@@ -151,10 +151,10 @@ void HandStrategy::list( ostream& s ) const
     else
     {
         cout << "I am carrying:";
-        
+
         if ( myLeftHand )
             cout << "\n  " << myLeftHand->getName();
-            
+
         if ( myRightHand )
             cout << "\n  " << myRightHand->getName();
     }
@@ -166,7 +166,7 @@ void HandStrategy::output( ostream& s ) const
 {
     if ( myLeftHand )
         s << myLeftHand->getID() << " ";
-        
+
     if ( myRightHand )
         s << myRightHand->getID();
 }
@@ -261,7 +261,7 @@ bool PackStrategy::hasItem( const Name& name )
 }
 
 // ---------------------------------------------------------
-// returns pointer to item  
+// returns pointer to item
 Carryable * PackStrategy::getItem( const Name& name )
 {
     if ( myContents.count( name ) )
@@ -278,7 +278,7 @@ Carryable * PackStrategy::getItem( const Name& name )
 Weight PackStrategy::getWeight() const
 {
     Weight total;
-    
+
     total += myPack->getWeight();
 
     map<Name, Carryable *>::const_iterator iter = myContents.begin();
@@ -287,7 +287,7 @@ Weight PackStrategy::getWeight() const
         total += iter->second->getWeight();
         iter++;
     }
-    
+
     return total;
 }
 
@@ -303,7 +303,7 @@ int PackStrategy::getCount() const
         total++;
         iter++;
     }
-    
+
     return total + 1;
 }
 
@@ -313,7 +313,7 @@ void PackStrategy::list( ostream& s ) const
 {
     cout << "I am carrying: ";
     cout << "\n  " << myPack->getName();
-    
+
     map<Name, Carryable *>::const_iterator iter = myContents.begin();
     while ( iter != myContents.end() )
     {
@@ -327,9 +327,9 @@ void PackStrategy::list( ostream& s ) const
 void PackStrategy::output( ostream& s ) const
 {
     map<Name, Carryable *>::const_iterator iter = myContents.begin();
-    
+
     s << myPack->getID();
-    
+
     while ( iter != myContents.end() )
     {
         s << " " << iter->second->getID();

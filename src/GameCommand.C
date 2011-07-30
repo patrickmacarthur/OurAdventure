@@ -420,12 +420,12 @@ bool ConsumeCommand::execute()
         {
             int oldHealth = myAdventurer->getHealth();
             int oldMoves = myAdventurer->getMovesLeft();
-        
+
             myAdventurer->getInventory()->removeItem( myAdventurer, name );
             myAdventurer->setHealth( myAdventurer->getHealth() +
                 item->getHealth() );
             cout << name << " consumed.\n";
-            
+
             int healthChange = myAdventurer->getHealth() - oldHealth;
             int movesChange = myAdventurer->getMovesLeft() - oldMoves;
             if ( healthChange < 0 )
@@ -453,12 +453,12 @@ bool ConsumeCommand::execute()
                 {
                     int oldHealth = myAdventurer->getHealth();
                     int oldMoves = myAdventurer->getMovesLeft();
-                    
+
                     myAdventurer->getCurrentFeature()->removeItem( item );
                     myAdventurer->setHealth( myAdventurer->getHealth() +
                         item->getHealth() );
                     cout << name << " consumed.\n";
-            
+
                     int healthChange = myAdventurer->getHealth() - oldHealth;
                     int movesChange = myAdventurer->getMovesLeft() - oldMoves;
                     if ( healthChange < 0 )

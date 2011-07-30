@@ -5,12 +5,12 @@
     Abstract parent class for all game commands. Many commands
     exert the adventure; these should call the adventurer's
     move() method.
-    
+
     All commands that require arguments use items' short names.
     If the item is a door, its name is simply "door".
-    
+
     All commands return a boolean success value.
-    
+
     Tom Harada
 */
 
@@ -29,7 +29,7 @@ class GameCommand {
     public:
         virtual bool execute() = 0;
             // Your thing. Do it.
-            
+
         static map<int, string> getSaveStates();
             // return a map of save state number-description
             // pairs, taken from the save state file
@@ -44,9 +44,9 @@ class LookCommand: public GameCommand {
         LookCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-    
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -62,9 +62,9 @@ class DetailCommand: public GameCommand {
         DetailCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-    
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -80,9 +80,9 @@ class InventoryCommand: public GameCommand {
         InventoryCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -99,9 +99,9 @@ class ExamineCommand: public GameCommand {
         ExamineCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -118,9 +118,9 @@ class TakeCommand: public GameCommand {
         TakeCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -137,9 +137,9 @@ class DropCommand: public GameCommand {
         DropCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -157,9 +157,9 @@ class UnlockCommand: public GameCommand {
         UnlockCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -175,9 +175,9 @@ class OpenCommand: public GameCommand {
         OpenCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -193,9 +193,9 @@ class ConsumeCommand: public GameCommand {
         ConsumeCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -211,9 +211,9 @@ class GoCommand: public GameCommand {
         GoCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -232,9 +232,9 @@ class InCommand: public GameCommand {
         InCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -253,9 +253,9 @@ class SaveCommand: public GameCommand {
         SaveCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -273,9 +273,9 @@ class RestoreCommand: public GameCommand {
         RestoreCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer and
             // map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -290,9 +290,9 @@ class QuitCommand: public GameCommand {
         QuitCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -318,9 +318,9 @@ class LocationCommand: public GameCommand {
         LocationCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -336,9 +336,9 @@ class GotoCommand: public GameCommand {
         GotoCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -355,9 +355,9 @@ class HealthCommand: public GameCommand {
         HealthCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -373,9 +373,9 @@ class EatCommand: public GameCommand {
         EatCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -391,9 +391,9 @@ class MoveCommand: public GameCommand {
         MoveCommand( Adventurer * adv, Map * map );
             // constructor takes references to adventurer
             // and map
-            
+
         virtual bool execute();
-        
+
     private:
         Adventurer * myAdventurer;
         Map * myMap;
@@ -405,7 +405,7 @@ class MoveCommand: public GameCommand {
 */
 
 class EchoCommand: public GameCommand {
-    public:           
+    public:
         virtual bool execute();
 };
 

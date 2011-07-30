@@ -173,7 +173,7 @@ int Adventurer::move()
     {
         myMovesUntilHealthDrop = myMaxMovesUntilHealthDrop;
         setHealth( myHealth - 1 );
-        
+
         switch ( myHealth )
         {
             case averageHealth:
@@ -187,7 +187,7 @@ int Adventurer::move()
                 break;
         }
     }
-        
+
     cout << "\n";
 
     return myHealth;

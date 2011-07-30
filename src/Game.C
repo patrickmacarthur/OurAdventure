@@ -1,6 +1,6 @@
 /*
     Main class for the adventure game.
-    
+
     Loading and saving the game is done by referring to a
     save state description, which corresponds in a save state
     list file to an adventurer/cave file pair. The program
@@ -8,10 +8,10 @@
     If the user chooses to start a new game, the default cave
     file and a default adventurer state defined here will be
     used. Up to 10 save states may be created.
-    
+
     Starting the game in testing mode will enable extra game
     commands.
-    
+
     Tom Harada
 */
 
@@ -55,37 +55,37 @@ Game::~Game()
 Game::Game( bool test, string caveFileName )
 {
     string restore = "";
-    
+
     do
     {
         cout << "(n)ew game or (r)estore? ";
         cin >> restore;
     }
     while ( !( restore == "n" || restore == "r" ) && cin );
-    
+
     if ( !cin )
     {
         cout << "\n";
         exit( 0 );
     }
-    
-    
+
+
     myItemFactory = new ItemFactory();
     addItems();
-    
+
     myMap = new Map( myItemFactory );
-    
+
     myAdventurer = new Adventurer( myMap );
-    
+
     myCommandProcessor = new GameCommandProcessor();
     addCommands( test );
-    
+
     ifstream caveFile;
-    
+
     if ( restore == "n" )
     {
         caveFile.open( caveFileName.c_str() );
-        
+
         if ( !caveFile )
         {
             cerr << "could not find cave.dat!\n";
@@ -96,7 +96,7 @@ Game::Game( bool test, string caveFileName )
             delete myCommandProcessor;
             exit( 0 );
         }
-        
+
         myMap->input( caveFile );
         caveFile.close();
         if ( ! myMap->getStartRoom() )
@@ -108,12 +108,12 @@ Game::Game( bool test, string caveFileName )
             delete myCommandProcessor;
             exit( 0 );
         }
-        
+
         myAdventurer->setHealth( myDefaultAdventurerHealth );
         myAdventurer->setMovesLeft( 0 );
         myAdventurer->setInventory( new HandStrategy() );
         myAdventurer->setCurrentFeature( myMap->getStartRoom() );
-        
+
         cout << "Welcome to the cave.\n" << myMap->getDirections();
         cout << "I am in ";
         myAdventurer->getCurrentFeature()->printName( cout );
@@ -174,7 +174,7 @@ void Game::run()
 // put in all the needed game commands; adds
 // testing commands only if instructed
 void Game::addCommands( bool testing )
-{    
+{
     myCommandProcessor->addCommand( "look",
         new LookCommand( myAdventurer, myMap ) );
     myCommandProcessor->addCommand( "detail",
@@ -251,7 +251,7 @@ void Game::addItems()
 }
 
 /*// ---------------------------------------------------------
-// sets up the adventurer and the map using the 
+// sets up the adventurer and the map using the
 // adventurer and cave files corresponding to the
 // description
 void Game::load( const string& description )
@@ -259,7 +259,7 @@ void Game::load( const string& description )
 }
 
 // ---------------------------------------------------------
-// saves the adventurer and the map using the 
+// saves the adventurer and the map using the
 // adventurer and cave files corresponding to the
 // description
 void Game::save( const string& description ) const

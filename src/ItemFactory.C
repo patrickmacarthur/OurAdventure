@@ -1,7 +1,7 @@
 /*
     A factory for producing (cloning) items. The items to be
     cloned should be added to its registry by the game.
-    
+
     Tom Harada
 */
 
@@ -14,7 +14,7 @@
 ItemFactory::~ItemFactory()
 {
     map<string, Item *>::iterator iter = myPrototypes.begin();
-    
+
     while ( iter != myPrototypes.end() )
     {
         delete iter->second;
@@ -29,7 +29,7 @@ void ItemFactory::addItem( string key, Item * item )
 {
     if ( myPrototypes.count( key ) )
         myPrototypes.erase( key );
-    
+
     myPrototypes[ key ] = item;
 }
 
@@ -49,7 +49,7 @@ Item * ItemFactory::generate( const string& type )
 void ItemFactory::save( ostream& s ) const
 {
     map<string, Item *>::const_iterator iter = myPrototypes.begin();
-    
+
     while ( iter != myPrototypes.end() )
     {
         iter->second->save( s );

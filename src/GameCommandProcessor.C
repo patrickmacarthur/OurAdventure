@@ -1,7 +1,7 @@
 /*
     Processes all commands that can be issued to the game by
     the user. Commands are keyed to a string.
-    
+
     Tom Harada
 */
 
@@ -23,13 +23,13 @@ GameCommandProcessor::GameCommandProcessor()
 GameCommandProcessor::~GameCommandProcessor()
 {
     map<string, GameCommand*>::iterator iter = myCommands.begin();
-    
+
     while ( iter != myCommands.end() )
     {
         delete iter->second;
         iter++;
     }
-    
+
     delete myBadCommand;
 }
 
@@ -40,7 +40,7 @@ void GameCommandProcessor::addCommand( const string& name, GameCommand * cmd )
 {
     if ( myCommands.count( name ) )
         myCommands.erase( name );
-        
+
     myCommands[ name ] = cmd;
 }
 
@@ -52,7 +52,7 @@ void GameCommandProcessor::addBadCommand( GameCommand * cmd )
 {
     if ( myBadCommand )
         delete myBadCommand;
-        
+
     myBadCommand = cmd;
 }
 
