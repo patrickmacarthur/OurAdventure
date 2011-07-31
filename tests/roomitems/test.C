@@ -22,22 +22,13 @@
 class MockCarryable : public Carryable
 {
     public:
-        const ID & getID() const { return m_id; }
-          // Returns ID
-
-        const Name & getName() const { return m_name; }
-          // Returns name
-
         void input( istream & s, Map * map );
           // Inputs the item
-    private:
-        ID m_id;
-        Name m_name;
 };
 
 void MockCarryable::input( istream & s, Map * m )
 {
-    s >> m_id >> m_name;
+    s >> itemID >> name;
 }
 
 //--------------------------------------------------------------

@@ -17,14 +17,9 @@
 class MockFeature : public Feature
 {
     public:
-        explicit MockFeature( const ID & id ) : m_id( id ) {}
-          // Constructor
-
-        const ID & getID() const { return m_id; }
-          // Returns ID
-
-    private:
-        ID m_id;
+        explicit MockFeature( const ID & id ) {
+          itemID = id;
+        }
 };
 
 //--------------------------------------------------------------

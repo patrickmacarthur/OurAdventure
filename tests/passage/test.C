@@ -12,6 +12,7 @@
 #include "Adjacency.h"
 #include "Feature.h"
 #include "StartRoom.h"
+#include "Map.h"
 
 Feature * getExit( map<ID, Feature *>, Feature * r1, const Direction & dir );
 
@@ -27,6 +28,7 @@ int main()
     StartRoom * start;
     Direction dir;
     string tag;
+    Map *gameMap = new Map(0);
 
     std::cout << "******* PASSAGE TESTS ***********\n";
     std::cout << "Input and save test. Expected output same as input plus tag\n";
@@ -40,19 +42,21 @@ int main()
         else if ( tag == "room" )
         {
             feature = new Room;
-            feature->input( std::cin, 0 );
+            feature->input( std::cin, gameMap );
+            feature->addToMap(gameMap);
             features.insert( pair<ID, Feature *>(feature->getID(), feature) );
         }
         else if ( tag == "passage" )
         {
             feature = new Passage;
-            feature->input( std::cin, 0 );
+            feature->input( std::cin, gameMap );
+            feature->addToMap(gameMap);
             features.insert( pair<ID, Feature *>(feature->getID(), feature) );
         }
         else if ( tag == "adj" )
         {
             adj = new Adjacency;
-            adj->input( std::cin, 0 );
+            adj->input( std::cin, gameMap );
             rIter = features.find( adj->getFeatureID() );
             if ( rIter == features.end() )
             {
