@@ -38,7 +38,7 @@ class ItemFactory {
         map<string, Item *> myPrototypes;
 };
 
-ostream& operator << ( ostream& s, const ItemFactory fac );
+ostream& operator << ( ostream& s, const ItemFactory &fac );
     // outputs using save operation
 
 istream& operator >> ( istream& s, ItemFactory fac );

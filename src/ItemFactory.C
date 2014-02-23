@@ -18,7 +18,7 @@ ItemFactory::~ItemFactory()
     while ( iter != myPrototypes.end() )
     {
         delete iter->second;
-        iter++;
+        ++iter;
     }
 }
 
@@ -54,7 +54,7 @@ void ItemFactory::save( ostream& s ) const
     {
         iter->second->save( s );
         s << "\n";
-        iter++;
+        ++iter;
     }
 }
 
@@ -67,7 +67,7 @@ void ItemFactory::input( istream& s )
 
 // ---------------------------------------------------------
 // outputs using save operation
-ostream& operator << ( ostream& s, const ItemFactory fac )
+ostream& operator << ( ostream& s, const ItemFactory &fac )
 {
     fac.save( s );
     return s;

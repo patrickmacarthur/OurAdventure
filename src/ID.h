@@ -15,9 +15,6 @@ class ID {
 
     public:
 
-        ID();
-            // constructor
-
         void input(istream &s);
             // inputs an id
 

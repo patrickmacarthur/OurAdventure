@@ -28,9 +28,8 @@ Lock::Lock()
  * creates a lock that needs a certain
  * key value
  */
-Lock::Lock(ID v)
+Lock::Lock(ID v) : value(v)
 {
-    value = v;
 }
 
 //-------------------------------------------------------------

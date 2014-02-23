@@ -18,9 +18,8 @@ using namespace std;
 /*
  * constructor
  */
-Container::Container()
+Container::Container() : myState(0), numItems(0)
 {
-    myState = 0;
 }
 
 //-------------------------------------------------------------
@@ -41,7 +40,7 @@ Item * Container::clone() const
     //ap<ID, Item *>::const_iterator iter;
 
     /*
-    for ( iter = contents.begin(); iter != contents.end(); iter++ )
+    for ( iter = contents.begin(); iter != contents.end(); ++iter )
         temp->addItem( iter->second );
     */
     temp->setState( myState );
@@ -96,7 +95,7 @@ bool Container::getItem( const Carryable *v )
         {
             map<ID, Container *>::iterator iter;
 
-            for ( iter = contain.begin(); iter != contain.end(); iter++ )
+            for ( iter = contain.begin(); iter != contain.end(); ++iter )
             {
                 if ( iter->second->isOpen() && iter->second->getItem( v ) )
                     return true;
@@ -153,7 +152,7 @@ void Container::save(ostream & s) const
     s << "container " << itemID << ' ' << name << ' ' << description
     << ' ' << *myState << numItems;
 
-    for ( iter = contents.begin(); iter != contents.end(); iter++ )
+    for ( iter = contents.begin(); iter != contents.end(); ++iter )
         s << ' ' << iter->first;
     */
 }
@@ -173,17 +172,17 @@ void Container::printDescription(ostream & s) const
 
         s << name << " contains:\n";
 
-        if ( carry.size() == 0 && contain.size() == 0 )
+        if ( carry.empty() && contain.empty() )
             cout << " nothing\n";
 
-        for ( carryIter = carry.begin(); carryIter != carry.end(); carryIter++ )
+        for ( carryIter = carry.begin(); carryIter != carry.end(); ++carryIter )
         {
             s << "  ";
             carryIter->second->printName( s );
             s << '\n';
         }
 
-        for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+        for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         {
             s << "  ";
             containIter->second->printName( s );
@@ -236,7 +235,7 @@ bool Container::hasItem( const Item *v ) const
     {
         map<ID, Container *>::const_iterator containIter;
 
-        for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+        for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         {
             if ( containIter->second->hasItem( v ) )
                 return true;
@@ -272,7 +271,7 @@ Container * Container::getContainer( const Name &v ) const
 {
     map<ID, Container*>::const_iterator iter;
 
-    for ( iter = contain.begin(); iter != contain.end(); iter++ )
+    for ( iter = contain.begin(); iter != contain.end(); ++iter )
     {
         if ( iter->second->getName() == v )
             return iter->second;
@@ -330,10 +329,10 @@ Item * Chest::clone() const
     map<ID, Carryable *>::const_iterator carryIter;
     map<ID, Container *>::const_iterator containIter;
 
-    for ( carryIter = carry.begin(); carryIter != carry.end(); carryIter++ )
+    for ( carryIter = carry.begin(); carryIter != carry.end(); ++carryIter )
         temp->addItem( carryIter->second );
 
-    for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+    for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         temp->addItem( containIter->second );
     */
     /*
@@ -413,10 +412,10 @@ void Chest::save(ostream & s) const
     description.save( s );
     s << ' ' << *myState << ' ' << numItems;
 
-    for ( carryIter = carry.begin(); carryIter != carry.end(); carryIter++ )
+    for ( carryIter = carry.begin(); carryIter != carry.end(); ++carryIter )
         s << ' ' << carryIter->first;
 
-    for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+    for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         s << ' ' << containIter->first;
 
     s << ' ' << lock->getKeyID();
@@ -532,10 +531,10 @@ Item * Box::clone() const
     map<ID, Carryable *>::const_iterator carryIter;
     map<ID, Container *>::const_iterator containIter;
 
-    for ( carryIter = carry.begin(); carryIter != carry.end(); carryIter++ )
+    for ( carryIter = carry.begin(); carryIter != carry.end(); ++carryIter )
         temp->addItem( carryIter->second );
 
-    for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+    for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         temp->addItem( containIter->second );
     */
     /*
@@ -581,7 +580,7 @@ void Box::input(istream & s, Map *m)
 
     myState = LockStateFactory::generate( state );
 
-    for ( int i = 0; i < numItems; i++ )
+    for ( int i = 0; i < numItems; ++i )
     {
         s >> tempID;
         tempCarry = m->getCarryableItem( tempID );
@@ -610,10 +609,10 @@ void Box::save(ostream & s) const
     description.save( s );
     s << ' ' << *myState << ' ' << numItems;
 
-    for ( carryIter = carry.begin(); carryIter != carry.end(); carryIter++ )
+    for ( carryIter = carry.begin(); carryIter != carry.end(); ++carryIter )
         s << ' ' << carryIter->first;
 
-    for ( containIter = contain.begin(); containIter != contain.end(); containIter++ )
+    for ( containIter = contain.begin(); containIter != contain.end(); ++containIter )
         s << ' ' << containIter->first;
 }
 

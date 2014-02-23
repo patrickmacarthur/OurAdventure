@@ -148,7 +148,6 @@ ExamineCommand::ExamineCommand( Adventurer * adv, Map * map )
 bool ExamineCommand::execute()
 {
     Name name;
-    const ID * id;
 
     cin >> name;
     if ( myAdventurer->getInventory()->hasItem( name ) )
@@ -156,7 +155,7 @@ bool ExamineCommand::execute()
             printDescription( cout );
     else
     {
-        id = myMap->getItemId( *myAdventurer->getCurrentFeature(), name );
+        const ID *id = myMap->getItemId( *myAdventurer->getCurrentFeature(), name );
 
 
         if ( myAdventurer->getCurrentFeature()->getContainer( name ) )
@@ -202,7 +201,6 @@ bool TakeCommand::execute()
 {
     Name name;
     const ID * id;
-    Carryable * item;
 
     cin >> name;
     id = myMap->getItemId( *myAdventurer->getCurrentFeature(), name );
@@ -211,7 +209,7 @@ bool TakeCommand::execute()
         cout << "I see no " << name << " here!\n";
     else
     {
-        item = myMap->getCarryableItem( *id );
+        Carryable *item = myMap->getCarryableItem( *id );
 
         if ( !item )
             cout << "I can't take " << name << "!\n";
@@ -562,7 +560,6 @@ GoCommand::GoCommand( Adventurer * adv, Map * map )
 bool GoCommand::execute()
 {
     Direction dir;
-    Feature * next;
 
     cin >> dir;
 
@@ -576,7 +573,7 @@ bool GoCommand::execute()
             cout << dir << " is not a direction!\n\n";
         else
         {
-            next = myAdventurer->getCurrentFeature()->getExit( dir );
+            Feature *next = myAdventurer->getCurrentFeature()->getExit( dir );
 
             if ( !next )
                 cout << "I can't go that way.\n";

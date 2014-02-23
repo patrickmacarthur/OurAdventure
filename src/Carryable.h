@@ -180,6 +180,8 @@ class Consumable: public Carryable {
 
     public:
 
+        Consumable() { health = 0; }
+
         virtual ~Consumable();
             // destructor
 

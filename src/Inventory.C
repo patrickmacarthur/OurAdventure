@@ -194,7 +194,7 @@ bool PackStrategy::addItem( Adventurer * adv, Carryable * item )
     while ( iter != myContents.end() )
     {
         total += iter->second->getSize();
-        iter++;
+        ++iter;
     }
 
     if ( item->isPack() && item->getSize() > myPack->getSize() )
@@ -285,7 +285,7 @@ Weight PackStrategy::getWeight() const
     while ( iter != myContents.end() )
     {
         total += iter->second->getWeight();
-        iter++;
+        ++iter;
     }
 
     return total;
@@ -300,8 +300,8 @@ int PackStrategy::getCount() const
     map<Name, Carryable *>::const_iterator iter = myContents.begin();
     while ( iter != myContents.end() )
     {
-        total++;
-        iter++;
+        ++total;
+        ++iter;
     }
 
     return total + 1;
@@ -318,7 +318,7 @@ void PackStrategy::list( ostream& s ) const
     while ( iter != myContents.end() )
     {
         cout << "\n    " << iter->first;
-        iter++;
+        ++iter;
     }
 }
 
@@ -333,6 +333,6 @@ void PackStrategy::output( ostream& s ) const
     while ( iter != myContents.end() )
     {
         s << " " << iter->second->getID();
-        iter++;
+        ++iter;
     }
 }

@@ -116,7 +116,7 @@ void Adjacency::input( std::istream & s, Map * map )
  */
 void Adjacency::printDescription( std::ostream & s )
 {
-    if ( m_table.size() == 0 )
+    if ( m_table.empty() )
     {
         s << "(No exits)\n";
     }

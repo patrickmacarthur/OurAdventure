@@ -35,9 +35,9 @@ int Adventurer::myMaxMovesUntilHealthDrop = 20;
 // ---------------------------------------------------------
 // constructor takes pointer to map
 Adventurer::Adventurer( Map * map )
+	: myInventory(0), myHealth(myMaxHealth), myMovesUntilHealthDrop(20),
+	myMap(map), myCurrentFeature(0)
 {
-    myMap = map;
-    myInventory = 0;
 }
 
 // ---------------------------------------------------------
@@ -90,7 +90,7 @@ void Adventurer::input( istream& s )
             if ( iter->second != largestPack )
                 myInventory->addItem( this, iter->second );
 
-            iter++;
+            ++iter;
         }
     }
     else
@@ -101,7 +101,7 @@ void Adventurer::input( istream& s )
         while ( iter != items.end() )
         {
             myInventory->addItem( this, iter->second );
-            iter++;
+            ++iter;
         }
     }
 

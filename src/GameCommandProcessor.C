@@ -26,7 +26,7 @@ GameCommandProcessor::~GameCommandProcessor()
     while ( iter != myCommands.end() )
     {
         delete iter->second;
-        iter++;
+        ++iter;
     }
 }
 

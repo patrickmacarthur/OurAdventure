@@ -76,7 +76,6 @@ bool DirectionList::isValid( const Direction & direction ) const
 void DirectionList::input( std::istream & s, Map * map )
 {
     int count;
-    Direction * dir;
 
     // Clear the list of any previous garbage
     this->clear();
@@ -85,7 +84,7 @@ void DirectionList::input( std::istream & s, Map * map )
     s >> count;
     for ( int i = 0; i < count; ++i )
     {
-        dir = new Direction;
+        Direction *dir = new Direction;
         s >> *dir;
         m_directions.push_back( dir );
     }

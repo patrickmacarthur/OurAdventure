@@ -12,7 +12,6 @@
  */
  Name::Name()
  {
-     value = "";
  }
 
 
@@ -20,9 +19,8 @@
 /*
  * sets to string
  */
- Name::Name(string v)
+ Name::Name(string v) : value(v)
  {
-     value = v;
  }
 
 //-------------------------------------------------------------

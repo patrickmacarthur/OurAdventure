@@ -24,9 +24,8 @@ Direction::Direction()
 /*
  * Constructs a direction with the given string
  */
-Direction::Direction( const std::string & v )
+Direction::Direction( const std::string & v ) : str(v)
 {
-    str = v;
 }
 
 //--------------------------------------------------------------
