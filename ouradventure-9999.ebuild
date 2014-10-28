@@ -10,13 +10,13 @@ MY_PN=${PN/ouradventure/OurAdventure}
 MY_P=${MY_PN}-${PV}
 
 # This needs to be done before inheriting git-2
-EGIT_REPO_URI="git://github.com/generalpenguin89/${MY_PN}.git
-https://github.com/generalpenguin89/${MY_PN}.git"
+EGIT_REPO_URI="git://github.com/patrickmacarthur/${MY_PN}.git
+https://github.com/patrickmacarthur/${MY_PN}.git"
 
 inherit games cmake-utils git-2
 
 DESCRIPTION="Text-based adventure program originally written for UNH CS 516 final project"
-HOMEPAGE="https://github.com/generalpenguin89/OurAdventure"
+HOMEPAGE="https://github.com/patrickmacarthur/OurAdventure"
 
 LICENSE="BSD"
 SLOT="0"
